@@ -1,0 +1,20 @@
+{
+    "compilerOptions": {
+      "target": "ESNext",
+      "module": "NodeNext",
+      "moduleResolution": "NodeNext",
+      "lib": ["DOM", "ESNext"],
+      "jsx": "react-jsx",
+      "esModuleInterop": true,
+      "allowSyntheticDefaultImports": true,
+      "skipLibCheck": true,
+      "baseUrl": ".",          
+      "paths": {
+        "@/*": ["src/*"]        
+      },
+      "allowImportingTsExtensions": true,
+      "noEmit": true
+    },
+    "include": ["src"]          
+}
+  
