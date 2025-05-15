@@ -1,27 +1,29 @@
 import { useState } from "react";
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardFooter } from "@/components/ui/card";
-import { resetPassword } from "../api/auth";
-import { Link } from "react-router-dom";
+import { Input } from "@/components/ui/input.tsx";
+import { Button } from "@/components/ui/button.tsx";
+import { Card, CardContent, CardFooter } from "@/components/ui/card.tsx";
+import { register } from "../api/auth.ts";
+import { useNavigate, Link } from "react-router-dom";
 
-export default function ResetPassword() {
+export default function Register() {
   const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await resetPassword({ email });
-      alert("Verifique seu email para resetar a senha");
+      await register({ email, password });
+      navigate("/");
     } catch {
-      alert("Erro ao solicitar reset");
+      alert("Erro ao registrar");
     }
   };
 
   return (
     <Card className="w-80 p-4 bg-primary text-white rounded-2xl shadow-lg">
       <CardContent>
-        <h2 className="text-xl mb-4">Resetar Senha</h2>
+        <h2 className="text-xl mb-4">Registrar</h2>
         <form onSubmit={handleSubmit} className="space-y-3">
           <Input
             type="email"
@@ -30,11 +32,18 @@ export default function ResetPassword() {
             onChange={(e) => setEmail(e.target.value)}
             required
           />
+          <Input
+            type="password"
+            placeholder="Senha"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
         </form>
       </CardContent>
       <CardFooter className="flex flex-col">
         <Button onClick={handleSubmit} className="w-full">
-          Enviar
+          Registrar
         </Button>
         <Link to="/" className="mt-2 text-sm text-accent text-center">
           Voltar ao login
