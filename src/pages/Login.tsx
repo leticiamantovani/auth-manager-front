@@ -14,7 +14,7 @@ export default function Login() {
     e.preventDefault();
     try {
       await login({ email, password });
-      navigate("/dashboard");
+      navigate("/success");
     } catch (err) {
       alert("Error logging in");
     }

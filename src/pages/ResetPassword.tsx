@@ -3,16 +3,17 @@ import { Input } from "@/components/ui/input.tsx";
 import { Button } from "@/components/ui/button.tsx";
 import { Card, CardContent, CardFooter } from "@/components/ui/card.tsx";
 import { resetPassword } from "../api/auth.ts";
-import { Link } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 export default function ResetPassword() {
   const [email, setEmail] = useState("");
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      navigate("/sent");
       await resetPassword({ email });
-      alert("Verify your email for reset link");
     } catch {
       alert("Error sending reset link");
     }
