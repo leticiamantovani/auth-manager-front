@@ -8,14 +8,14 @@ export default function Success() {
   return (
     <Card className="w-80 p-6 bg-primary text-white rounded-2xl shadow-lg flex flex-col items-center space-y-4">
       <CardContent>
-        <h2 className="text-2xl font-semibold text-center">Logado com sucesso!</h2>
+        <h2 className="text-2xl font-semibold text-center">Logged in successfully!</h2>
       </CardContent>
       <CardFooter className="w-full">
         <Button
           onClick={() => navigate("/dashboard")}
           className="w-full"
         >
-          Ir para Dashboard
+          :)
         </Button>
       </CardFooter>
     </Card>
