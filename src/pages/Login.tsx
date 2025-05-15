@@ -14,17 +14,16 @@ export default function Login() {
     e.preventDefault();
     try {
       await login({ email, password });
-      // redirecionar após login
       navigate("/dashboard");
     } catch (err) {
-      alert("Erro no login");
+      alert("Error logging in");
     }
   };
 
   return (
     <Card className="w-80 p-4 bg-primary text-white rounded-2xl shadow-lg">
       <CardContent>
-        <h2 className="text-xl mb-4">Entrar</h2>
+        <h2 className="text-xl mb-4">Log in</h2>
         <form onSubmit={handleSubmit} className="space-y-3">
           <Input
             type="email"
@@ -35,22 +34,22 @@ export default function Login() {
           />
           <Input
             type="password"
-            placeholder="Senha"
+            placeholder="Password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
           />
           <Link to="/reset-password" className="text-sm text-accent">
-            Esqueci minha senha
+            Forgot my password
           </Link>
         </form>
       </CardContent>
       <CardFooter className="flex flex-col">
         <Button onClick={handleSubmit} className="w-full">
-          Entrar
+          Log in
         </Button>
         <Link to="/register" className="mt-2 text-sm text-accent text-center">
-          Criar conta
+          Don't have an account? Register
         </Link>
       </CardFooter>
     </Card>
